@@ -67,29 +67,25 @@ def create_snake(t):
 
 # Functions to change the direction of the snake
 # Snake cannot make move in the complete opposite direction of its current orientation
-def move_up():
+def up_move():
+    global snake_dir 
+    snake_dir = 8
+def down_move():
     global snake_dir
-    if snake_dir != 2: 
-        snake_dir = 1
-def move_down():
+    snake_dir = 2
+def left_move():
     global snake_dir
-    if snake_dir != 1:
-        snake_dir = 2
-def move_left():
-    global snake_dir
-    if snake_dir != 4:
-        snake_dir = 3
+    snake_dir = 4
 def move_right():
     global snake_dir
-    if snake_dir != 3:
-        snake_dir = 4
+    snake_dir = 6
 
 # Controls mapped to the joystick
 if True:
-    sense.stick.direction_up = move_up
-    sense.stick.direction_down = move_down
-    sense.stick.direction_left = move_left
-    sense.stick.direction_right = move_right
+    sense.stick.direction_up = up_move
+    sense.stick.direction_down = down_move
+    sense.stick.direction_left = left_move
+    sense.stick.direction_right = right_move
 
 # Main game loop
 while True:
