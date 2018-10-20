@@ -15,10 +15,10 @@ frog = [randint(0, 7), randint(0, 7)]
 
 snake_dir = 1
 # Direction of snake
-# 1 = up
+# 8 = up
 # 2 = down
-# 3 = left
-# 4 = right
+# 4 = left
+# 6 = right
 
 def make_frog():
     sense.set_pixel(frog[0], frog[1], 0, 255, 0)
