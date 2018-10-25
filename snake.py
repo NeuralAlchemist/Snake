@@ -76,7 +76,7 @@ def down_move():
 def left_move():
     global snake_dir
     snake_dir = 4
-def right_move():
+def move_right():
     global snake_dir
     snake_dir = 6
 
@@ -88,8 +88,19 @@ if True:
     sense.stick.direction_right = right_move
 
 # Main game loop
+#Startup screen
+sense.show_message("Classic Snake by Group")
+sense.show_letter("H",back_colour[128,0,128])
+sense.show_letter("E",back_colour[128,0,128])
+sense.show_letter("X",back_colour[128,0,128])
+    
 while True:
     sense.clear()
+    #Game start countdown"
+    sense.show_message("Game Starts in:")
+    for i in reversed(range(0,3)):
+        sense.show_letter(str(i))
+        time.sleep(1)
     
     end = False
     for i in range (1, int(len(snake)/2)-1):
@@ -98,7 +109,8 @@ while True:
         if not end:
             # Checks it the snake head is colliding with any of the snake segments
             if snake[0] == snake[2*i] and snake[1] == snake[2*i+1]:
-                sense.show_message("You scored " + str(score))         
+                sense.show_message("Game over ! You scored " + str(score))  
+                
                 score = 0
                 speed = 0.50
                 snake = [4, 3, 4, 4, 4, 5, 4, 6]
