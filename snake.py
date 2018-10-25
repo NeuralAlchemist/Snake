@@ -98,7 +98,7 @@ while True:
     sense.clear()
     #Game start countdown"
     sense.show_message("Game Starts in:")
-    for i in reversed(range(0,3)):
+    for i in reversed(range(1,3)):
         sense.show_letter(str(i))
         time.sleep(1)
     
