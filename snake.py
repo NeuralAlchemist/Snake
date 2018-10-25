@@ -76,7 +76,7 @@ def down_move():
 def left_move():
     global snake_dir
     snake_dir = 'A'
-def move_right():
+def right_move():
     global snake_dir
     snake_dir = 'D'
 
