@@ -15,10 +15,10 @@ frog = [randint(0, 7), randint(0, 7)]
 
 snake_dir = 1
 # Direction of snake
-# 8 = up
-# 2 = down
-# 4 = left
-# 6 = right
+# W = up
+# S = down
+# A = left
+# D = right
 
 def make_frog():
     sense.set_pixel(frog[0], frog[1], 0, 255, 0)
@@ -69,16 +69,16 @@ def create_snake(t):
 # Snake cannot make move in the complete opposite direction of its current orientation
 def up_move():
     global snake_dir 
-    snake_dir = 8
+    snake_dir = 'W'
 def down_move():
     global snake_dir
-    snake_dir = 2
+    snake_dir = 'S'
 def left_move():
     global snake_dir
-    snake_dir = 4
+    snake_dir = 'A'
 def move_right():
     global snake_dir
-    snake_dir = 6
+    snake_dir = 'D'
 
 # Controls mapped to the joystick
 if True:
