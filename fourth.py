@@ -6,10 +6,10 @@ from time import sleep
 from random import randint
 
 sense = SenseHat()
-up =1
-down =2
-left =3
-right =4
+up = "W"
+down = "S"
+left = "A"
+right = "D"
 class snake_game:
     snake=[]
     foodX = 0
