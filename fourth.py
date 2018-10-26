@@ -6,37 +6,37 @@ from time import sleep
 from random import randint
 
 sense = SenseHat()
-north = "W"
-south = "S"
-west = "A"
-east = "D"
+up ="W"
+down ="S"
+left ="A"
+right ="D"
 class snake_game:
     snake=[]
     foodX = 0
     foodY= 0
     snake_dir = up 
-    speed = 1.5
+    speed = 0
     score = 0
 
 class snake_game:
     def move_up(self):
-        if self.snake_dir != south: 
-            self.snake_dir = north
+        if self.snake_dir != down: 
+            self.snake_dir = up
     def move_down(self):
-        if self.snake_dir != north:
-            self.snake_dir = south
+        if self.snake_dir != up:
+            self.snake_dir = down
     def move_left(self):
-        if self.snake_dir != east:
-            self.snake_dir = west
+        if self.snake_dir != right:
+            self.snake_dir = left
     def move_right(self):
-        if self.snake_dir != west:
-            self.snake_dir = east
+        if self.snake_dir != left:
+            self.snake_dir = right
      
     def __init__(self):
         self.score = 0
         self.speed = 1.0
-        self.snake = [2,3,2,4]
-        self.snake_dir = north
+        self.snake = [2,3,2,4,2,5]
+        self.snake_dir = up
         self.foodX = randint(0, 7)
         self.foodY=randint(0, 7)
         sense.stick.direction_up = self.move_up
@@ -46,11 +46,11 @@ class snake_game:
     
     def rearrange_snake(self):
         snake_length = len(self.snake)
-        if self.snake_dir == north:
+        if self.snake_dir == up:
             self.snake[1] -=1
-        elif self.snake_dir == south:
+        elif self.snake_dir == down:
             self.snake[1] +=1
-        elif self.snake_dir == west:
+        elif self.snake_dir == left:
             self.snake[0] -=1
         else:
             self.snake[0] +=1
@@ -87,7 +87,20 @@ class snake_game:
             else:
                 sense.set_pixel(self.snake[2*(i)], self.snake[2*(i)+1], 255, 255, 255)
 
-    def run(self): 
+    def run(self):
+        sense.show_message("Classic Snake game by Group",0.08)
+        text_colour=[255,255,255]
+        back_colour=[0,0,0]
+        sense.show_letter("H",text_colour=[255,255,255],back_colour=[0,0,0])
+        sleep(0.5)
+        sense.show_letter("E",text_colour=[255,255,255],back_colour=[0,0,0])
+        sleep(0.5)
+        sense.show_letter("X",text_colour=[255,255,255],back_colour=[0,0,0])
+        sleep(0.5)
+        sense.show_message("Game starting in",0.08)
+        for i in reversed(range(1,4)):
+            sense.show_letter(str(i))
+            sleep(0.5)
         while True:
             sense.clear()
             snake_length = len(self.snake)
@@ -95,6 +108,10 @@ class snake_game:
                     if self.snake[0] == self.snake[2*i] and self.snake[1] == self.snake[2*i+1]:
                         sense.show_message("You scored " + str(self.score))         
                         self.__init__()
+                        sense.show_message("New game starting in",0.08)
+                        for i in reversed(range(1,4)):
+                          sense.show_letter(str(i))
+                          sleep(0.5)
                         break
             
             self.make_food()
