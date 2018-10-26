@@ -39,7 +39,6 @@ class snake_game:
         self.snake_dir = north
         self.foodX = randint(0, 7)
         self.foodY=randint(0, 7)
-        self.stick_control=False
         sense.stick.direction_up = self.move_up
         sense.stick.direction_down = self.move_down
         sense.stick.direction_left = self.move_left
