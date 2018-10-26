@@ -6,10 +6,10 @@ from time import sleep
 from random import randint
 
 sense = SenseHat()
-up = "W"
-down = "S"
-left = "A"
-right = "D"
+north = "W"
+south = "S"
+west = "A"
+east = "D"
 class snake_game:
     snake=[]
     foodX = 0
@@ -20,23 +20,23 @@ class snake_game:
 
 class snake_game:
     def move_up(self):
-        if self.snake_dir != down: 
-            self.snake_dir = up
+        if self.snake_dir != south: 
+            self.snake_dir = north
     def move_down(self):
-        if self.snake_dir != up:
-            self.snake_dir = down
+        if self.snake_dir != north:
+            self.snake_dir = south
     def move_left(self):
-        if self.snake_dir != right:
-            self.snake_dir = left
+        if self.snake_dir != east:
+            self.snake_dir = west
     def move_right(self):
-        if self.snake_dir != left:
-            self.snake_dir = right
+        if self.snake_dir != west:
+            self.snake_dir = east
      
     def __init__(self):
         self.score = 0
         self.speed = 1.0
         self.snake = [2,3,2,4]
-        self.snake_dir = up
+        self.snake_dir = north
         self.foodX = randint(0, 7)
         self.foodY=randint(0, 7)
         self.stick_control=False
@@ -47,11 +47,11 @@ class snake_game:
     
     def rearrange_snake(self):
         snake_length = len(self.snake)
-        if self.snake_dir == up:
+        if self.snake_dir == north:
             self.snake[1] -=1
-        elif self.snake_dir == down:
+        elif self.snake_dir == south:
             self.snake[1] +=1
-        elif self.snake_dir == left:
+        elif self.snake_dir == west:
             self.snake[0] -=1
         else:
             self.snake[0] +=1
